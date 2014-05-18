@@ -1,0 +1,23 @@
+{
+  "name": "backbone-viewmanager",
+  "version": "0.0.1",
+  "description": "Backbone View plugin to simplify rendering and life cycle management",
+  "main": "backbone.viewmanager.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nnance/backbone-viewmanager.git"
+  },
+  "keywords": [
+    "Backbone"
+  ],
+  "author": "Nick Nance",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nnance/backbone-viewmanager/issues"
+  },
+  "homepage": "https://github.com/nnance/backbone-viewmanager",
+  "devDependencies": {}
+}

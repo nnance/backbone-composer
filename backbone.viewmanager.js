@@ -20,6 +20,12 @@
 
   _.extend(Backbone.View.prototype, {
 
+    /**
+    * ViewManager has a default render function that will render
+    * if there is a template function defined in the view.  It returns this
+    * to support chaining
+    * @render
+    */
     render: function() {
         if (this.template) {
             this.$el.html(this.template(this));
@@ -30,6 +36,12 @@
         return this;
     },
 
+    /**
+    * Use setView to replace the entire contents of the view with a new view.
+    * this function will also remove all views currently contained within the view.
+    * @setView
+    * @param {Backbone.View} view - The view to use
+    */
     setView: function(view) {
         this.removeSubViews();
         this.addSubView({view: view, selector: this.$el});

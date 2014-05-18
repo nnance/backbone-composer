@@ -1,4 +1,4 @@
 backbone-viewmanager
 ====================
 
-Backbone View plugin to manage rendering and view clean up
+Backbone View plugin to simplify rendering and life cycle management

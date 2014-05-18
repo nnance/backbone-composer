@@ -17,6 +17,61 @@ Backbone View plugin to simplify rendering and life cycle management
 </div>
 <dl>
 <dt>
+<h4 class="name" id="addSubView"><span class="type-signature"></span>addSubView<span class="signature">(options)</span><span class="type-signature"></span></h4>
+</dt>
+<dd>
+<div class="description">
+<p>AddSubView is used to render and add a subview to an parent view.</p>
+</div>
+<h5>Parameters:</h5>
+<table class="params">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th class="last">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="name"><code>options</code></td>
+<td class="type">
+<span class="param-type">object</span>
+</td>
+<td class="description last"><p>An option object with a view and a selector</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="details">
+<dt class="tag-source">Source:</dt>
+<dd class="tag-source"><ul class="dummy">
+<li>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
+<span>, </span>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L65">lineno 65</a>
+</li>
+</ul></dd>
+</dl>
+</dd>
+<dt>
+<h4 class="name" id="removeSubViews"><span class="type-signature"></span>removeSubViews<span class="signature">()</span><span class="type-signature"></span></h4>
+</dt>
+<dd>
+<div class="description">
+<p>Removes all sub-views from a parent</p>
+</div>
+<dl class="details">
+<dt class="tag-source">Source:</dt>
+<dd class="tag-source"><ul class="dummy">
+<li>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
+<span>, </span>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L100">lineno 100</a>
+</li>
+</ul></dd>
+</dl>
+</dd>
+<dt>
 <h4 class="name" id="render"><span class="type-signature"></span>render<span class="signature">()</span><span class="type-signature"></span></h4>
 </dt>
 <dd>
@@ -32,6 +87,24 @@ to support chaining</p>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L29">lineno 29</a>
+</li>
+</ul></dd>
+</dl>
+</dd>
+<dt>
+<h4 class="name" id="serializeForm"><span class="type-signature"></span>serializeForm<span class="signature">()</span><span class="type-signature"></span></h4>
+</dt>
+<dd>
+<div class="description">
+<p>Return all the fields and their value of a form as an object</p>
+</div>
+<dl class="details">
+<dt class="tag-source">Source:</dt>
+<dd class="tag-source"><ul class="dummy">
+<li>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
+<span>, </span>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L112">lineno 112</a>
 </li>
 </ul></dd>
 </dl>

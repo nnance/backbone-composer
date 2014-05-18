@@ -57,6 +57,11 @@
         return this.addSubView({view: view, selector: location});
     },
 
+    /**
+    * AddSubView is used to render and add a subview to an parent view.
+    * @addSubView
+    * @param {object} options - An option object with a view and a selector
+    */
     addSubView: function(options) {
         if (!this._subViews)
             this._subViews = [options.view];
@@ -88,6 +93,10 @@
         return options.view;
     },
 
+    /**
+    * Removes all sub-views from a parent
+    * @removeSubViews
+    */
     removeSubViews: function() {
         _.each(this._subViews, function(subView, i){
             subView.remove();
@@ -95,6 +104,11 @@
         }, this);
     },
 
+    /**
+    * Return all the fields and their value of a form as an object
+    * @serializeForm
+    * @params {string} selector - A jquery selector identifying the form
+    */
     serializeForm: function(selector) {
         var result = {};
         var fields = this.$(selector).serializeArray();

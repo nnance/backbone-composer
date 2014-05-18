@@ -21,7 +21,7 @@
   _.extend(Backbone.View.prototype, {
 
     render: function() {
-        if (template) {
+        if (this.template) {
             this.$el.html(this.template(this));
             if (this.onRender && _.isFunction(this.onRender)) {
                 this.onRender.apply(this, arguments);

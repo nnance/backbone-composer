@@ -20,6 +20,16 @@
 
   _.extend(Backbone.View.prototype, {
 
+    render: function() {
+        if (template) {
+            this.$el.html(this.template(this));
+            if (this.onRender && _.isFunction(this.onRender)) {
+                this.onRender.apply(this, arguments);
+            }
+        }
+        return this;
+    },
+
     setView: function(view) {
         this.removeSubViews();
         this.addSubView({view: view, selector: this.$el});
@@ -58,6 +68,10 @@
             selector.after(options.view.el);
         else
             selector.append(options.view.el);
+
+        if (options.view.onShow && _.isFunction(options.view.onShow)) {
+            options.view.onShow.apply(this,arguments);
+        }
 
         return options.view;
     },

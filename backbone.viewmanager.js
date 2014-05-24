@@ -105,6 +105,17 @@
     },
 
     /**
+    * Helper function to return the attribute of a model if the model is assigned
+    * @getAttr
+    * @params {string} attribute - The name of the attribute
+    */
+    getAttr: function(attribute) {
+        if (this.model) {
+            return this.model.get(attribute);
+        }
+    },
+
+    /**
     * Return all the fields and their value of a form as an object
     * @serializeForm
     * @params {string} selector - A jquery selector identifying the form

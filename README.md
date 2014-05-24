@@ -54,6 +54,24 @@ Backbone View plugin to simplify rendering and life cycle management
 </dl>
 </dd>
 <dt>
+<h4 class="name" id="getAttr"><span class="type-signature"></span>getAttr<span class="signature">()</span><span class="type-signature"></span></h4>
+</dt>
+<dd>
+<div class="description">
+<p>Helper function to return the attribute of a model if the model is assigned</p>
+</div>
+<dl class="details">
+<dt class="tag-source">Source:</dt>
+<dd class="tag-source"><ul class="dummy">
+<li>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
+<span>, </span>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L112">lineno 112</a>
+</li>
+</ul></dd>
+</dl>
+</dd>
+<dt>
 <h4 class="name" id="removeSubViews"><span class="type-signature"></span>removeSubViews<span class="signature">()</span><span class="type-signature"></span></h4>
 </dt>
 <dd>
@@ -104,7 +122,7 @@ to support chaining</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L112">lineno 112</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L123">lineno 123</a>
 </li>
 </ul></dd>
 </dl>

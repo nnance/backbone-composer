@@ -139,6 +139,7 @@
   });
 
     Backbone.View.prototype.remove = _.wrap(Backbone.View.prototype.remove, function(oldRemove) {
+        this.unbind();
         this.removeSubViews();
         if (oldRemove) oldRemove.call(this);
     });

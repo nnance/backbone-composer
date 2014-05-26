@@ -22,8 +22,9 @@
 
     /**
     * ViewManager has a default render function that will render
-    * if there is a template function defined in the view.  It returns this
-    * to support chaining. This will trigger a 'rendered' event.
+    * if there is a template function defined in the view.  Implement an 'onRender'
+    * function to extend the render functionality.  It returns 'this' to support
+    * chaining. This will trigger a 'rendered' event.
     * @render
     */
     render: function() {
@@ -93,7 +94,6 @@
         if (options.view.onShow && _.isFunction(options.view.onShow)) {
             options.view.onShow.apply(this,arguments);
         }
-
         this.trigger('shown');
 
         return options.view;
@@ -143,11 +143,16 @@
     },
 
     /**
-    * Remove all subviews and safely remove this view from the DOM. This will trigger
-    * a 'closed' event just before removing from the DOM.
+    * Remove all subviews and safely remove this view from the DOM. Implement an
+    * 'onClose' function for any additional clean up that is required before
+    * removing the view from the DOM.  This will trigger a 'closed' event just
+    * before removing from the DOM.
     * @close
     */
     close: function() {
+        if (this.onClose && _.isFunction(this.onClose)) {
+            this.onClose.apply(this, arguments);
+        }
         this.unbind();
         this.removeSubViews();
         this.remove();

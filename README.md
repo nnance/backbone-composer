@@ -50,7 +50,7 @@ to perform some work after the view is added to the DOM you can implement a
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L69">lineno 69</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L70">lineno 70</a>
 </li>
 </ul></dd>
 </dl>
@@ -60,8 +60,10 @@ to perform some work after the view is added to the DOM you can implement a
 </dt>
 <dd>
 <div class="description">
-<p>Remove all subviews and safely remove this view from the DOM. This will trigger
-a 'closed' event just before removing from the DOM.</p>
+<p>Remove all subviews and safely remove this view from the DOM. Implement an
+'onClose' function for any additional clean up that is required before
+removing the view from the DOM.  This will trigger a 'closed' event just
+before removing from the DOM.</p>
 </div>
 <dl class="details">
 <dt class="tag-source">Source:</dt>
@@ -69,7 +71,7 @@ a 'closed' event just before removing from the DOM.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L150">lineno 150</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L152">lineno 152</a>
 </li>
 </ul></dd>
 </dl>
@@ -116,8 +118,9 @@ a 'closed' event just before removing from the DOM.</p>
 <dd>
 <div class="description">
 <p>ViewManager has a default render function that will render
-if there is a template function defined in the view.  It returns this
-to support chaining. This will trigger a 'rendered' event.</p>
+if there is a template function defined in the view.  Implement an 'onRender'
+function to extend the render functionality.  It returns 'this' to support
+chaining. This will trigger a 'rendered' event.</p>
 </div>
 <dl class="details">
 <dt class="tag-source">Source:</dt>
@@ -125,7 +128,7 @@ to support chaining. This will trigger a 'rendered' event.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L29">lineno 29</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L30">lineno 30</a>
 </li>
 </ul></dd>
 </dl>
@@ -182,7 +185,7 @@ This will trigger a 'shown' event.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L47">lineno 47</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L48">lineno 48</a>
 </li>
 </ul></dd>
 </dl>

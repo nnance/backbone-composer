@@ -99,7 +99,7 @@
     */
     removeSubViews: function() {
         _.each(this._subViews, function(subView, i){
-            subView.remove();
+            subView.close();
             delete this._subViews[i];
         }, this);
     },
@@ -136,12 +136,16 @@
         return result;
     },
 
-  });
-
-    Backbone.View.prototype.remove = _.wrap(Backbone.View.prototype.remove, function(oldRemove) {
+    /**
+    * Remove all subview and safely remove from the DOM
+    * @close
+    */
+    close: function() {
         this.unbind();
         this.removeSubViews();
-        if (oldRemove) oldRemove.call(this);
-    });
+        this.remove();
+    }
+
+  });
 
 }));

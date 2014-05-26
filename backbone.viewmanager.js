@@ -23,7 +23,7 @@
     /**
     * ViewManager has a default render function that will render
     * if there is a template function defined in the view.  It returns this
-    * to support chaining
+    * to support chaining. This will trigger a 'rendered' event.
     * @render
     */
     render: function() {
@@ -32,6 +32,7 @@
             if (this.onRender && _.isFunction(this.onRender)) {
                 this.onRender.apply(this, arguments);
             }
+            this.trigger('rendered');
         }
         return this;
     },
@@ -39,6 +40,7 @@
     /**
     * Use setView to replace the entire contents of the view with a new view.
     * this function will also remove all views currently contained within the view.
+    * This will trigger a 'shown' event.
     * @setView
     * @param {Backbone.View} view - The view to use
     */
@@ -58,7 +60,9 @@
     },
 
     /**
-    * AddSubView is used to render and add a subview to an parent view.
+    * AddSubView is used to render and add a subview to an parent view. If you need
+    * to perform some work after the view is added to the DOM you can implement a
+    * 'onShow' function.  This will also trigger a 'shown' event.
     * @addSubView
     * @param {object} options - An option object with a view and a selector
     */
@@ -89,6 +93,8 @@
         if (options.view.onShow && _.isFunction(options.view.onShow)) {
             options.view.onShow.apply(this,arguments);
         }
+
+        this.trigger('shown');
 
         return options.view;
     },
@@ -137,13 +143,15 @@
     },
 
     /**
-    * Remove all subview and safely remove from the DOM
+    * Remove all subviews and safely remove this view from the DOM. This will trigger
+    * a 'closed' event just before removing from the DOM.
     * @close
     */
     close: function() {
         this.unbind();
         this.removeSubViews();
         this.remove();
+        this.trigger('closed');
     }
 
   });

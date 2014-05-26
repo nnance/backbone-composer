@@ -21,7 +21,9 @@ Backbone View plugin to simplify rendering and life cycle management
 </dt>
 <dd>
 <div class="description">
-<p>AddSubView is used to render and add a subview to an parent view.</p>
+<p>AddSubView is used to render and add a subview to an parent view. If you need
+to perform some work after the view is added to the DOM you can implement a
+'onShow' function.  This will also trigger a 'shown' event.</p>
 </div>
 <h5>Parameters:</h5>
 <table class="params">
@@ -48,7 +50,7 @@ Backbone View plugin to simplify rendering and life cycle management
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L65">lineno 65</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L69">lineno 69</a>
 </li>
 </ul></dd>
 </dl>
@@ -58,7 +60,8 @@ Backbone View plugin to simplify rendering and life cycle management
 </dt>
 <dd>
 <div class="description">
-<p>Remove all subview and safely remove from the DOM</p>
+<p>Remove all subviews and safely remove this view from the DOM. This will trigger
+a 'closed' event just before removing from the DOM.</p>
 </div>
 <dl class="details">
 <dt class="tag-source">Source:</dt>
@@ -66,7 +69,7 @@ Backbone View plugin to simplify rendering and life cycle management
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L143">lineno 143</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L150">lineno 150</a>
 </li>
 </ul></dd>
 </dl>
@@ -84,7 +87,7 @@ Backbone View plugin to simplify rendering and life cycle management
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L112">lineno 112</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L118">lineno 118</a>
 </li>
 </ul></dd>
 </dl>
@@ -102,7 +105,7 @@ Backbone View plugin to simplify rendering and life cycle management
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L100">lineno 100</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L106">lineno 106</a>
 </li>
 </ul></dd>
 </dl>
@@ -114,7 +117,7 @@ Backbone View plugin to simplify rendering and life cycle management
 <div class="description">
 <p>ViewManager has a default render function that will render
 if there is a template function defined in the view.  It returns this
-to support chaining</p>
+to support chaining. This will trigger a 'rendered' event.</p>
 </div>
 <dl class="details">
 <dt class="tag-source">Source:</dt>
@@ -140,7 +143,7 @@ to support chaining</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L123">lineno 123</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L129">lineno 129</a>
 </li>
 </ul></dd>
 </dl>
@@ -151,7 +154,8 @@ to support chaining</p>
 <dd>
 <div class="description">
 <p>Use setView to replace the entire contents of the view with a new view.
-this function will also remove all views currently contained within the view.</p>
+this function will also remove all views currently contained within the view.
+This will trigger a 'shown' event.</p>
 </div>
 <h5>Parameters:</h5>
 <table class="params">
@@ -178,7 +182,7 @@ this function will also remove all views currently contained within the view.</p
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L45">lineno 45</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L47">lineno 47</a>
 </li>
 </ul></dd>
 </dl>

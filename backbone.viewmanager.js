@@ -92,7 +92,7 @@
             selector.append(options.view.el);
 
         if (options.view.onShow && _.isFunction(options.view.onShow)) {
-            options.view.onShow.apply(this,arguments);
+            options.view.onShow.apply(options.view,arguments);
         }
         this.trigger('shown');
 

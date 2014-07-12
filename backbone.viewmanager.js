@@ -25,6 +25,11 @@
     * if there is a template function defined in the view.  Implement an 'onRender'
     * function to extend the render functionality.  It returns 'this' to support
     * chaining. This will trigger a 'rendered' event.
+    *
+    * The default behavior of render will attach the view to the top element of
+    * the template so that it will not be just a div which is the default behavior
+    * of backbone.  To override this behavior set the option attachToTemplate to
+    * false on the view.
     * @render
     */
     render: function() {
@@ -50,9 +55,16 @@
     * This will trigger a 'shown' event.
     * @setView
     * @param {Backbone.View} view - The view to use
+    * @param {object} options - Set options.emptyDOM to true in cases where the DOM
+    * that the view is attached is managed by something other than Backbone
     */
     setView: function(view, options) {
         this.removeSubViews();
+        // this is needed for cases where the DOM is changed by something
+        // other than what is managed by backbone
+        if (options && options.emptyDOM) {
+            this.$el.empty();
+        }
         this.addSubView({view: view, selector: this.$el});
         return view;
     },

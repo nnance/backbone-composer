@@ -1,5 +1,5 @@
 {
-  "name": "backbone-viewmanager",
+  "name": "backbone.viewmanager",
   "version": "0.1.0",
   "description": "Backbone View plugin to simplify rendering and life cycle management",
   "main": "backbone.viewmanager.js",

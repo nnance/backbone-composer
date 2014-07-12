@@ -30,6 +30,12 @@
     render: function() {
         if (this.template) {
             this.$el.html(this.template(this));
+            if (_.isUndefined(this.attachToTemplate) || this.attachToTemplate) {
+                var topElement = this.$el.first();
+                if (topElement.children().length === 1) {
+                    this.setElement(topElement.children().first());
+                }
+            }
             if (this.onRender && _.isFunction(this.onRender)) {
                 this.onRender.apply(this, arguments);
             }
@@ -45,7 +51,7 @@
     * @setView
     * @param {Backbone.View} view - The view to use
     */
-    setView: function(view) {
+    setView: function(view, options) {
         this.removeSubViews();
         this.addSubView({view: view, selector: this.$el});
         return view;
@@ -94,7 +100,7 @@
         if (options.view.onShow && _.isFunction(options.view.onShow)) {
             options.view.onShow.apply(options.view,arguments);
         }
-        this.trigger('shown');
+        options.view.trigger('shown');
 
         return options.view;
     },

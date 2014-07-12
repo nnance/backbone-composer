@@ -1,0 +1,24 @@
+{
+  "name": "backbone-viewmanager",
+  "version": "0.0.1",
+  "homepage": "https://github.com/nnance/backbone-viewmanager",
+  "authors": [
+    "Nick Nance <nance.nick@gmail.com>"
+  ],
+  "description": "Backbone View plugin to simplify rendering and life cycle management",
+  "main": "backbone.viewmanager.js",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "Backbone"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

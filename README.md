@@ -50,7 +50,7 @@ to perform some work after the view is added to the DOM you can implement a
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L70">lineno 70</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L88">lineno 88</a>
 </li>
 </ul></dd>
 </dl>
@@ -71,7 +71,7 @@ before removing from the DOM.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L152">lineno 152</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L170">lineno 170</a>
 </li>
 </ul></dd>
 </dl>
@@ -89,7 +89,7 @@ before removing from the DOM.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L118">lineno 118</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L136">lineno 136</a>
 </li>
 </ul></dd>
 </dl>
@@ -107,7 +107,7 @@ before removing from the DOM.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L106">lineno 106</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L124">lineno 124</a>
 </li>
 </ul></dd>
 </dl>
@@ -121,6 +121,10 @@ before removing from the DOM.</p>
 if there is a template function defined in the view.  Implement an 'onRender'
 function to extend the render functionality.  It returns 'this' to support
 chaining. This will trigger a 'rendered' event.</p>
+<p>The default behavior of render will attach the view to the top element of
+the template so that it will not be just a div which is the default behavior
+of backbone.  To override this behavior set the option attachToTemplate to
+false on the view.</p>
 </div>
 <dl class="details">
 <dt class="tag-source">Source:</dt>
@@ -128,7 +132,7 @@ chaining. This will trigger a 'rendered' event.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L30">lineno 30</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L35">lineno 35</a>
 </li>
 </ul></dd>
 </dl>
@@ -146,13 +150,13 @@ chaining. This will trigger a 'rendered' event.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L129">lineno 129</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L147">lineno 147</a>
 </li>
 </ul></dd>
 </dl>
 </dd>
 <dt>
-<h4 class="name" id="setView"><span class="type-signature"></span>setView<span class="signature">(view)</span><span class="type-signature"></span></h4>
+<h4 class="name" id="setView"><span class="type-signature"></span>setView<span class="signature">(view, options)</span><span class="type-signature"></span></h4>
 </dt>
 <dd>
 <div class="description">
@@ -177,6 +181,14 @@ This will trigger a 'shown' event.</p>
 </td>
 <td class="description last"><p>The view to use</p></td>
 </tr>
+<tr>
+<td class="name"><code>options</code></td>
+<td class="type">
+<span class="param-type">object</span>
+</td>
+<td class="description last"><p>Set options.emptyDOM to true in cases where the DOM
+that the view is attached is managed by something other than Backbone</p></td>
+</tr>
 </tbody>
 </table>
 <dl class="details">
@@ -185,7 +197,7 @@ This will trigger a 'shown' event.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L48">lineno 48</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L61">lineno 61</a>
 </li>
 </ul></dd>
 </dl>

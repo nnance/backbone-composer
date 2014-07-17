@@ -26,16 +26,15 @@
     * function to extend the render functionality.  It returns 'this' to support
     * chaining. This will trigger a 'rendered' event.
     *
-    * The default behavior of render will attach the view to the top element of
-    * the template so that it will not be just a div which is the default behavior
-    * of backbone.  To override this behavior set the option attachToTemplate to
-    * false on the view.
+    * By setting attachToTemplate render will attach the view to the top element of
+    * the template. Using this option will remove the default behavior of Backbone
+    * that creates all views with a default div tag.  
     * @render
     */
     render: function() {
         if (this.template) {
             this.$el.html(this.template(this));
-            if (_.isUndefined(this.attachToTemplate) || this.attachToTemplate) {
+            if (this.attachToTemplate) {
                 var topElement = this.$el.first();
                 if (topElement.children().length === 1) {
                     this.setElement(topElement.children().first());

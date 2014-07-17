@@ -50,7 +50,7 @@ to perform some work after the view is added to the DOM you can implement a
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L88">lineno 88</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L87">lineno 87</a>
 </li>
 </ul></dd>
 </dl>
@@ -71,7 +71,7 @@ before removing from the DOM.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L170">lineno 170</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L169">lineno 169</a>
 </li>
 </ul></dd>
 </dl>
@@ -89,7 +89,7 @@ before removing from the DOM.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L136">lineno 136</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L135">lineno 135</a>
 </li>
 </ul></dd>
 </dl>
@@ -107,7 +107,7 @@ before removing from the DOM.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L124">lineno 124</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L123">lineno 123</a>
 </li>
 </ul></dd>
 </dl>
@@ -121,10 +121,9 @@ before removing from the DOM.</p>
 if there is a template function defined in the view.  Implement an 'onRender'
 function to extend the render functionality.  It returns 'this' to support
 chaining. This will trigger a 'rendered' event.</p>
-<p>The default behavior of render will attach the view to the top element of
-the template so that it will not be just a div which is the default behavior
-of backbone.  To override this behavior set the option attachToTemplate to
-false on the view.</p>
+<p>By setting attachToTemplate render will attach the view to the top element of
+the template. Using this option will remove the default behavior of Backbone
+that creates all views with a default div tag.</p>
 </div>
 <dl class="details">
 <dt class="tag-source">Source:</dt>
@@ -132,7 +131,7 @@ false on the view.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L35">lineno 35</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L34">lineno 34</a>
 </li>
 </ul></dd>
 </dl>
@@ -150,7 +149,7 @@ false on the view.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L147">lineno 147</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L146">lineno 146</a>
 </li>
 </ul></dd>
 </dl>
@@ -197,7 +196,7 @@ that the view is attached is managed by something other than Backbone</p></td>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L61">lineno 61</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L60">lineno 60</a>
 </li>
 </ul></dd>
 </dl>

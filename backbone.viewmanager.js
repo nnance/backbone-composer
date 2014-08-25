@@ -28,7 +28,7 @@
     *
     * By setting attachToTemplate render will attach the view to the top element of
     * the template. Using this option will remove the default behavior of Backbone
-    * that creates all views with a default div tag.  
+    * that creates all views with a default div tag.
     * @render
     */
     render: function() {
@@ -124,6 +124,23 @@
         _.each(this._subViews, function(subView, i){
             subView.close();
             delete this._subViews[i];
+        }, this);
+    },
+
+    /**
+    * RemoveSubViewForModel will close the first sub view that has the attched
+    * model.  As a result a 'closed' event will be fired for the view and it
+    * will be removed from the DOM.
+    * @removeSubViewForModel
+    * @param {object} model - The model associated with the view
+    */
+    removeSubViewForModel: function(model) {
+        _.find(this._subViews, function(subView, index) {
+          if (subView.model === model) {
+              subView.close();
+              this._subViews.splice(index,1);
+              return true;
+          }
         }, this);
     },
 

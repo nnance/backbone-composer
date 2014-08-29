@@ -1,16 +1,19 @@
 (function (factory) {
 
   // Check for AMD.
-  if (typeof define === 'function' && define.amd)
+  if (typeof define === 'function' && define.amd) {
     define(['underscore', 'backbone'], factory);
+  }
 
   // Next for Node.js or CommonJS.
-  else if (typeof exports === 'object')
+  else if (typeof exports === 'object') {
     factory(require('underscore'), require('backbone'));
+  }
 
   // Finally, as a browser global.
-  else
+  else {
     factory(_, Backbone);
+  }
 
 }(function (_, Backbone) {
 
@@ -69,8 +72,9 @@
     },
 
     getView: function() {
-        if (this._subViews && this._subViews.length > 0)
+        if (this._subViews && this._subViews.length > 0) {
             return this._subViews[0];
+        }
     },
 
     insertView: function(view, location) {
@@ -85,28 +89,37 @@
     * @param {object} options - An option object with a view and a selector
     */
     addSubView: function(options) {
-        if (!this._subViews)
+        if (!this._subViews) {
             this._subViews = [options.view];
-        else
+        }
+        else {
             this._subViews.push(options.view);
+        }
 
         var selector;
-        if (_.isObject(options.selector))
+        if (_.isObject(options.selector)) {
             selector = options.selector;
-        else if (_.isString(options.selector))
+        }
+        else if (_.isString(options.selector)) {
             selector = this.$(options.selector);
-        else
+        }
+        else {
             selector = this.$el;
+        }
 
         options.view.render();
-        if (options.location === 'prepend')
+        if (options.location === 'prepend') {
             selector.prepend(options.view.el);
-        else if (options.location === 'before')
+        }
+        else if (options.location === 'before') {
             selector.before(options.view.el);
-        else if (options.location === 'after')
+        }
+        else if (options.location === 'after') {
             selector.after(options.view.el);
-        else
+        }
+        else {
             selector.append(options.view.el);
+        }
 
         if (options.view.onShow && _.isFunction(options.view.onShow)) {
             options.view.onShow.apply(options.view,arguments);
@@ -121,7 +134,7 @@
     * @removeSubViews
     */
     removeSubViews: function() {
-        _.each(this._subViews, function(subView, i){
+        _.each(this._subViews, function(subView, i) {
             subView.close();
             delete this._subViews[i];
         }, this);

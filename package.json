@@ -19,5 +19,14 @@
     "url": "https://github.com/nnance/backbone-viewmanager/issues"
   },
   "homepage": "https://github.com/nnance/backbone-viewmanager",
-  "devDependencies": {}
+  "dependencies": {
+    "backbone": ">=0.9.9 <=1.1.2",
+    "underscore": ">=1.4.0 <=1.6.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-jasmine": "~0.6.4",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-watch": "~0.2.0"
+  }
 }

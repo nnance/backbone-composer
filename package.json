@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/nnance/backbone-viewmanager",
   "dependencies": {
+    "jquery": "^2.1.1",
     "backbone": ">=0.9.9 <=1.1.2",
     "underscore": ">=1.4.0 <=1.6.0"
   },

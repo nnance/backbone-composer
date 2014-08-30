@@ -14,7 +14,6 @@
     "jQuery": true,
     "Backbone": true,
     "_": true,
-    "Marionette": true,
     "$": true,
     "slice": true,
     "require": true,

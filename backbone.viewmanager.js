@@ -77,10 +77,6 @@
         }
     },
 
-    insertView: function(view, location) {
-        return this.addSubView({view: view, selector: location});
-    },
-
     /**
     * AddSubView is used to render and add a subview to an parent view. If you need
     * to perform some work after the view is added to the DOM you can implement a

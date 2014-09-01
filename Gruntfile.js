@@ -28,12 +28,8 @@ module.exports = function(grunt) {
 
     watch: {
       plugin : {
-        files : ['src/*.js', 'spec/**/*.js'],
+        files : ['backbone.viewmanager.js', 'test/**/*.js'],
         tasks : ['jshint', 'jasmine:plugin']
-      },
-      server : {
-        files : ['src/*.js', 'spec/**/*.js'],
-        tasks : ['jasmine:plugin:build']
       }
     }
   });

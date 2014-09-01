@@ -30,17 +30,29 @@ describe('View Manager', function(){
     var view;
     beforeEach(function(){
       view = new Backbone.View();
+      view.template = _.template('<table></table>');
     });
 
     it("should return itself for chaining methods", function(){
-        expect(view.render()).toBe(view);
+      expect(view.render()).toBe(view);
+    });
+
+    it('should render the template as the first child', function(){
+      view.render();
+      expect(view.$el.children().first().prop('nodeName')).toEqual('TABLE');
     });
 
     it("should trigger a rendered event", function() {
-      var watcher = jasmine.createSpy("onRender");
+      var watcher = jasmine.createSpy("rendered");
       view.on('rendered',watcher);
       view.render();
       expect(watcher).toHaveBeenCalled();
+    });
+
+    it("should call the onRender function", function() {
+      view.onRender = jasmine.createSpy("onRender");
+      view.render();
+      expect(view.onRender).toHaveBeenCalled();
     });
   });
 });

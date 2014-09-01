@@ -35,7 +35,7 @@
     * @render
     */
     render: function() {
-        if (this.template) {
+        if (this.template && _.isFunction(this.template)) {
             this.$el.html(this.template(this));
             if (this.attachToTemplate) {
                 var topElement = this.$el.first();

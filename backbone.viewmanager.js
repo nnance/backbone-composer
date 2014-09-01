@@ -43,11 +43,11 @@
                     this.setElement(topElement.children().first());
                 }
             }
-            if (this.onRender && _.isFunction(this.onRender)) {
-                this.onRender.apply(this, arguments);
-            }
-            this.trigger('rendered');
         }
+        if (this.onRender && _.isFunction(this.onRender)) {
+            this.onRender.apply(this, arguments);
+        }
+        this.trigger('rendered');
         return this;
     },
 

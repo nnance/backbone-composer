@@ -36,12 +36,11 @@
     */
     render: function() {
         if (this.template && _.isFunction(this.template)) {
-            this.$el.html(this.template(this));
-            if (this.attachToTemplate) {
-                var topElement = this.$el.first();
-                if (topElement.children().length === 1) {
-                    this.setElement(topElement.children().first());
-                }
+            var $template = $(this.template(this));
+            if (this.attachToTemplate && $template.length === 1) {
+                this.setElement($template);
+            } else {
+              this.$el.html($template[0]);
             }
         }
         if (this.onRender && _.isFunction(this.onRender)) {

@@ -1,10 +1,10 @@
 describe('View Manager', function(){
-  describe('when creating a Backbone view', function(){
-    var view;
-    beforeEach(function(){
-      view = new Backbone.View();
-    });
+  var view;
+  beforeEach(function(){
+    view = new Backbone.View();
+  });
 
+  describe('when creating a Backbone view', function(){
     it('should provide a setView function', function(){
       expect(_.isFunction(view.setView)).toBe(true);
     });
@@ -27,12 +27,6 @@ describe('View Manager', function(){
   });
 
   describe('when rendering a Backbone view', function(){
-    var view;
-    beforeEach(function(){
-      var View = Backbone.View.extend();
-      view = new View();
-    });
-
     it("should return itself for chaining methods", function(){
       expect(view.render()).toBe(view);
     });
@@ -53,12 +47,8 @@ describe('View Manager', function(){
   });
 
   describe('when rendering a view with single parent template', function(){
-    var view;
     beforeEach(function(){
-      var View = Backbone.View.extend({
-        template: _.template('<table><th><td>name</td><td>email</td></th></table>'),
-      });
-      view = new View();
+      view.template = _.template('<table><th><td>name</td><td>email</td></th></table>')
     });
 
     describe('with attachToTemplate disabled', function(){
@@ -105,12 +95,8 @@ describe('View Manager', function(){
   });
 
   describe('when rendering a view with multiple parent template', function(){
-    var view;
     beforeEach(function(){
-      var View = Backbone.View.extend({
-        template: _.template('<table><th><td>name</td><td>email</td></th></table><p>test</p>'),
-      });
-      view = new View();
+      view.template = _.template('<table><th><td>name</td><td>email</td></th></table><p>test</p>');
     });
 
     describe('with attachToTemplate disabled', function(){
@@ -139,21 +125,30 @@ describe('View Manager', function(){
       });
     });
 
-    describe('when rerendering a view with attachToTemplate enabled', function(){
-      beforeEach(function(){
-        view.attachToTemplate = true;
-        view.render().render();
-      });
+  });
 
-      it("should have a div element as the root node", function(){
-        expect(view.el.nodeName).toBe('DIV');
-      });
-
-      it("should have table as first child elements", function(){
-        expect(view.$el.children().first().prop('nodeName')).toEqual('TABLE');
-      });
+  describe('when calling setView with no options', function(){
+    var subView;
+    beforeEach(function(){
+      subView = new Backbone.View({});
+      subView.template = _.template('<table></table>');
     });
 
+    it('should remove the existing views', function(){
+      view.removeSubViews = jasmine.createSpy("removeSubViews");
+      view.setView(subView);
+      expect(view.removeSubViews).toHaveBeenCalled();
+    });
+
+    it('should have a table child element', function(){
+      view.setView(subView);
+      expect(view.$('table').length).toBe(1);
+    });
+
+    it('should add the view to the subViews', function(){
+      view.setView(subView);
+      expect(view._subViews.length).toBe(1);
+    });
   });
 
 });

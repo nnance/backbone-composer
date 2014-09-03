@@ -1,7 +1,10 @@
 describe('View Manager', function(){
   var view;
+  var SubView = Backbone.View.extend({tagName: 'table'});
+  var subView;
   beforeEach(function(){
     view = new Backbone.View();
+    subView = new SubView();
   });
 
   describe('when creating a Backbone view', function(){
@@ -27,19 +30,19 @@ describe('View Manager', function(){
   });
 
   describe('when rendering a Backbone view', function(){
-    it("should return itself for chaining methods", function(){
+    it('should return itself for chaining methods', function(){
       expect(view.render()).toBe(view);
     });
 
-    it("should trigger a rendered event", function() {
-      var watcher = jasmine.createSpy("rendered");
+    it('should trigger a rendered event', function() {
+      var watcher = jasmine.createSpy('rendered');
       view.on('rendered',watcher);
       view.render();
       expect(watcher).toHaveBeenCalled();
     });
 
-    it("should call the onRender function", function() {
-      view.onRender = jasmine.createSpy("onRender");
+    it('should call the onRender function', function() {
+      view.onRender = jasmine.createSpy('onRender');
       view.render();
       expect(view.onRender).toHaveBeenCalled();
     });
@@ -68,11 +71,11 @@ describe('View Manager', function(){
         view.render();
       });
 
-      it("should have the table element as the root node", function(){
+      it('should have the table element as the root node', function(){
         expect(view.el.nodeName).toBe('TABLE');
       });
 
-      it("should have table body as first child elements", function(){
+      it('should have table body as first child elements', function(){
         expect(view.$el.children().first().prop('nodeName')).toEqual('TBODY');
       });
     });
@@ -83,11 +86,11 @@ describe('View Manager', function(){
         view.render().render();
       });
 
-      it("should have the table element as the root node", function(){
+      it('should have the table element as the root node', function(){
         expect(view.el.nodeName).toBe('TABLE');
       });
 
-      it("should have table body as first child elements", function(){
+      it('should have table body as first child elements', function(){
         expect(view.$el.children().first().prop('nodeName')).toEqual('TBODY');
       });
     });
@@ -116,39 +119,129 @@ describe('View Manager', function(){
         view.render();
       });
 
-      it("should have a div element as the root node", function(){
+      it('should have a div element as the root node', function(){
         expect(view.el.nodeName).toBe('DIV');
       });
 
-      it("should have table as first child elements", function(){
+      it('should have table as first child elements', function(){
         expect(view.$el.children().first().prop('nodeName')).toEqual('TABLE');
       });
     });
 
   });
 
-  describe('when calling setView with no options', function(){
-    var subView;
+  describe('when calling setView', function(){
     beforeEach(function(){
-      subView = new Backbone.View({});
-      subView.template = _.template('<table></table>');
+      view.removeSubViews = jasmine.createSpy('removeSubViews');
+      view.setView(subView);
     });
 
     it('should remove the existing views', function(){
-      view.removeSubViews = jasmine.createSpy("removeSubViews");
-      view.setView(subView);
       expect(view.removeSubViews).toHaveBeenCalled();
     });
 
     it('should have a table child element', function(){
-      view.setView(subView);
       expect(view.$('table').length).toBe(1);
     });
 
     it('should add the view to the subViews', function(){
-      view.setView(subView);
       expect(view._subViews.length).toBe(1);
     });
   });
+
+  describe('when calling setView with emptyDOM option', function(){
+    beforeEach(function(){
+      view.$el.empty = jasmine.createSpy('empty');
+      view.setView(subView,{emptyDOM: true});
+    });
+
+    it('should empty the DOM of the container', function(){
+      expect(view.$el.empty).toHaveBeenCalled();
+    });
+
+  });
+
+  describe('when calling addSubView', function(){
+    var watcher = jasmine.createSpy('watcher');
+    beforeEach(function(){
+      subView.on('shown',watcher);
+      view.$el.append = jasmine.createSpy('append');
+      subView.render = jasmine.createSpy('render');
+      subView.onShow = jasmine.createSpy('onShow');
+      view.addSubView({view: subView});
+    });
+
+    it('should call render on the sub view', function(){
+      expect(subView.render).toHaveBeenCalled();
+    });
+
+    it('should append the content to the container', function(){
+      expect(view.$el.append).toHaveBeenCalledWith(subView.el);
+    });
+
+    it('should add the view to the subViews', function(){
+      expect(view._subViews.length).toBe(1);
+    });
+
+    it('should call onShow on the sub view', function(){
+      expect(subView.onShow).toHaveBeenCalled();
+    });
+
+    it('should trigger a shown event on sub view', function(){
+      expect(watcher).toHaveBeenCalled();
+    });
+
+    it('should return the sub view for chaining methods', function(){
+      expect(view.addSubView({view: subView})).toBe(subView);
+    });
+
+  });
+
+  describe('when calling addSubView', function(){
+    beforeEach(function(){
+      view.template = _.template('<div id="container"></div>');
+      view.render();
+    });
+
+    describe('with a selector', function(){
+      beforeEach(function(){
+        view.addSubView({view: subView, selector: '#container'});
+      });
+
+      it('should append to the selected container', function(){
+        expect(view.$('#container').children().first().prop('nodeName')).toBe('TABLE');
+      });
+    });
+
+    describe('with a prepend location', function(){
+      beforeEach(function(){
+        view.$el.prepend = jasmine.createSpy('prepend');
+        view.addSubView({view: subView, location: 'prepend'});
+      });
+      it('should call prepend on the view', function(){
+        expect(view.$el.prepend).toHaveBeenCalled();
+      });
+    });
+
+  });
+
+  describe('when calling removeSubViews', function(){
+    var subView2 = new Backbone.View();
+    beforeEach(function(){
+      subView.close = jasmine.createSpy('close');
+      view.addSubView({view: subView});
+      subView2.close = jasmine.createSpy('close');
+      view.addSubView({view: subView2});
+      view.removeSubViews();
+    });
+    it('should call close on each sub view', function(){
+      expect(subView.close).toHaveBeenCalled();
+      expect(subView2.close).toHaveBeenCalled();
+    });
+    it('should remove all the sub views from the list', function(){
+      expect(view._subViews.length).toBe(0);
+    });
+  });
+
 
 });

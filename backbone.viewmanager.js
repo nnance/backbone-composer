@@ -133,6 +133,7 @@
             subView.close();
             delete this._subViews[i];
         }, this);
+        this._subViews = [];
     },
 
     /**

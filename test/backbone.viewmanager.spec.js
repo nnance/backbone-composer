@@ -30,20 +30,22 @@ describe('View Manager', function(){
   });
 
   describe('when rendering a Backbone view', function(){
+    var watcher = jasmine.createSpy('rendered');
+    beforeEach(function(){
+      view.on('rendered',watcher);
+      view.onRender = jasmine.createSpy('onRender');
+      view.render();
+    });
+
     it('should return itself for chaining methods', function(){
       expect(view.render()).toBe(view);
     });
 
     it('should trigger a rendered event', function() {
-      var watcher = jasmine.createSpy('rendered');
-      view.on('rendered',watcher);
-      view.render();
       expect(watcher).toHaveBeenCalled();
     });
 
     it('should call the onRender function', function() {
-      view.onRender = jasmine.createSpy('onRender');
-      view.render();
       expect(view.onRender).toHaveBeenCalled();
     });
 
@@ -240,6 +242,29 @@ describe('View Manager', function(){
     });
     it('should remove all the sub views from the list', function(){
       expect(view._subViews.length).toBe(0);
+    });
+  });
+
+  describe('when calling close', function(){
+    var watcher = jasmine.createSpy('watcher');
+    beforeEach(function(){
+      view.removeSubViews = jasmine.createSpy('removeSubViews');
+      view.onClose = jasmine.createSpy('onClose');
+      view.remove = jasmine.createSpy('remove');
+      view.on('closed',watcher);
+      view.close();
+    });
+    it('should remove all sub views', function(){
+      expect(view.removeSubViews).toHaveBeenCalled();
+    });
+    it('should call remove', function(){
+      expect(view.remove).toHaveBeenCalled();
+    });
+    it('should call onClose', function(){
+      expect(view.onClose).toHaveBeenCalled();
+    });
+    it('should trigger closed event', function(){
+      expect(watcher).toHaveBeenCalled();
     });
   });
 

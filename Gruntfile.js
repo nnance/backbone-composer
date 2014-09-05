@@ -3,19 +3,14 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    jasmine : {
-      options : {
-        //helpers : 'spec/javascripts/helpers/*.js',
-        specs : 'test/*.js',
-        vendor : [
-          'node_modules/jquery/dist/jquery.js',
-          'node_modules/underscore/underscore.js',
-          'node_modules/backbone/backbone.js'
-        ],
-        keepRunner: false
+    mocha_phantomjs: {
+      options: {
+        reporter: "spec"
       },
-      plugin : {
-        src : ['backbone.viewmanager.js']
+      plugin: {
+        files: {
+          src: ['test/spec.html']
+        }
       }
     },
 
@@ -29,20 +24,20 @@ module.exports = function(grunt) {
     watch: {
       plugin : {
         files : ['backbone.viewmanager.js', 'test/**/*.js'],
-        tasks : ['jshint', 'jasmine:plugin']
+        tasks : ['jshint', 'mocha_phantomjs:plugin']
       }
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-mocha-phantomjs');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('test', ['jshint', 'jasmine:plugin']);
+  grunt.registerTask('test', ['jshint', 'mocha_phantomjs:plugin']);
 
   grunt.registerTask('dev', ['test', 'watch:plugin']);
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'jasmine:plugin', 'preprocess', 'template', 'concat', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'mocha_phantomjs:plugin', 'preprocess', 'template', 'concat', 'uglify']);
 
 };

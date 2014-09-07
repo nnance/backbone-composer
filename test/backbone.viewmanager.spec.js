@@ -50,6 +50,22 @@ describe('View Manager', function(){
     });
   });
 
+  describe('when rendering a view with a serializeData method',function(){
+    beforeEach(function(){
+      view.template = _.template('<table><tr><td><%=name%></td></tr></table>');
+      view.serializeData = sinon.spy(function(){
+        return {name:'mocha'};
+      });
+      view.render();
+    })
+    it('should call the serializeData method', function(){
+      expect(view.serializeData).to.be.calledOnce;
+    });
+    it('should have a column with a value of mocha', function(){
+      expect(view.$('td').text()).to.equal('mocha');
+    });
+  });
+
   describe('when rendering a view with single parent template', function(){
     beforeEach(function(){
       view.template = _.template('<table><th><td>name</td><td>email</td></th></table>')
@@ -69,10 +85,6 @@ describe('View Manager', function(){
       beforeEach(function(){
         view.attachToTemplate = true;
         view.render();
-      });
-
-      after(function(){
-        view.attachToTemplate = false;
       });
 
       it('should have the table element as the root node', function(){

@@ -25,7 +25,11 @@
 
     /**
     * ViewManager has a default render function that will render
-    * if there is a template function defined in the view.  Implement an 'onRender'
+    * if there is a template function defined in the view.  If serializeData is
+    * implemented its' return value will be passed to the template funcion otherwise
+    * this will be passed.
+    *
+    * Implement an 'onRender'
     * function to extend the render functionality.  It returns 'this' to support
     * chaining. This will trigger a 'rendered' event.
     *
@@ -36,7 +40,8 @@
     */
     render: function() {
         if (this.template && _.isFunction(this.template)) {
-            var $template = $(this.template(this));
+            var data = _.isFunction(this.serializeData) ? this.serializeData() : this;
+            var $template = $(this.template(data));
             if (this.attachToTemplate && $template.length === 1) {
                 this.setElement($template);
             } else {

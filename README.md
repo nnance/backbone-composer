@@ -50,7 +50,7 @@ to perform some work after the view is added to the DOM you can implement a
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L87">lineno 87</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L95">lineno 95</a>
 </li>
 </ul></dd>
 </dl>
@@ -71,7 +71,7 @@ before removing from the DOM.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L169">lineno 169</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L212">lineno 212</a>
 </li>
 </ul></dd>
 </dl>
@@ -89,7 +89,82 @@ before removing from the DOM.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L135">lineno 135</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L178">lineno 178</a>
+</li>
+</ul></dd>
+</dl>
+</dd>
+<dt>
+<h4 class="name" id="getSubViewCount"><span class="type-signature"></span>getSubViewCount<span class="signature">()</span><span class="type-signature"></span></h4>
+</dt>
+<dd>
+<div class="description">
+<p>Retrieve the current number of sub views.</p>
+</div>
+<dl class="details">
+<dt class="tag-source">Source:</dt>
+<dd class="tag-source"><ul class="dummy">
+<li>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
+<span>, </span>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L140">lineno 140</a>
+</li>
+</ul></dd>
+</dl>
+</dd>
+<dt>
+<h4 class="name" id="getView"><span class="type-signature"></span>getView<span class="signature">()</span><span class="type-signature"></span></h4>
+</dt>
+<dd>
+<div class="description">
+<p>Use getView to retrieve the primary subView</p>
+</div>
+<dl class="details">
+<dt class="tag-source">Source:</dt>
+<dd class="tag-source"><ul class="dummy">
+<li>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
+<span>, </span>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L82">lineno 82</a>
+</li>
+</ul></dd>
+</dl>
+</dd>
+<dt>
+<h4 class="name" id="removeSubViewForModel"><span class="type-signature"></span>removeSubViewForModel<span class="signature">(model)</span><span class="type-signature"></span></h4>
+</dt>
+<dd>
+<div class="description">
+<p>RemoveSubViewForModel will close the first sub view that has the attched
+model.  As a result a 'closed' event will be fired for the view and it
+will be removed from the DOM.</p>
+</div>
+<h5>Parameters:</h5>
+<table class="params">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th class="last">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="name"><code>model</code></td>
+<td class="type">
+<span class="param-type">object</span>
+</td>
+<td class="description last"><p>The model associated with the view</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="details">
+<dt class="tag-source">Source:</dt>
+<dd class="tag-source"><ul class="dummy">
+<li>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
+<span>, </span>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L163">lineno 163</a>
 </li>
 </ul></dd>
 </dl>
@@ -107,7 +182,7 @@ before removing from the DOM.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L123">lineno 123</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L148">lineno 148</a>
 </li>
 </ul></dd>
 </dl>
@@ -118,7 +193,10 @@ before removing from the DOM.</p>
 <dd>
 <div class="description">
 <p>ViewManager has a default render function that will render
-if there is a template function defined in the view.  Implement an 'onRender'
+if there is a template function defined in the view.  If serializeData is
+implemented its' return value will be passed to the template funcion otherwise
+this will be passed.</p>
+<p>Implement an 'onRender'
 function to extend the render functionality.  It returns 'this' to support
 chaining. This will trigger a 'rendered' event.</p>
 <p>By setting attachToTemplate render will attach the view to the top element of
@@ -131,7 +209,7 @@ that creates all views with a default div tag.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L34">lineno 34</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L41">lineno 41</a>
 </li>
 </ul></dd>
 </dl>
@@ -149,7 +227,7 @@ that creates all views with a default div tag.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L146">lineno 146</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L189">lineno 189</a>
 </li>
 </ul></dd>
 </dl>
@@ -196,7 +274,7 @@ that the view is attached is managed by something other than Backbone</p></td>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L60">lineno 60</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L67">lineno 67</a>
 </li>
 </ul></dd>
 </dl>

@@ -75,6 +75,10 @@
         return view;
     },
 
+    /**
+    * Use getView to retrieve the primary subView
+    * @getView
+    */
     getView: function() {
         if (this._subViews && this._subViews.length > 0) {
             return this._subViews[0];
@@ -129,6 +133,10 @@
         return options.view;
     },
 
+    /**
+    * Retrieve the current number of sub views.
+    * @getSubViewCount
+    */
     getSubViewCount: function() {
       return this._subViews ? this._subViews.length : 0;
     },

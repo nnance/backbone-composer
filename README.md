@@ -2,6 +2,7 @@ backbone.viewmanager
 ====================
 
 [![Build Status](https://secure.travis-ci.org/nnance/backbone-viewmanager.png?branch=master)](http://travis-ci.org/nnance/backbone-viewmanager)
+[![Coverage Status](https://img.shields.io/coveralls/nnance/backbone-viewmanager.svg)](https://coveralls.io/r/nnance/backbone-viewmanager)
 
 Backbone View plugin to simplify rendering and life cycle management
 

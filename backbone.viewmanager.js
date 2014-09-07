@@ -124,6 +124,10 @@
         return options.view;
     },
 
+    getSubViewCount: function() {
+      return this._subViews ? this._subViews.length : 0;
+    },
+
     /**
     * Removes all sub-views from a parent
     * @removeSubViews

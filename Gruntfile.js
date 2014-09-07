@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 
     watch: {
       plugin : {
-        files : ['backbone.viewmanager.js', 'test/**/*.js'],
+        files : ['backbone.viewmanager.js', 'test/**/*.js', 'test/spec.html'],
         tasks : ['jshint', 'mocha_phantomjs:plugin']
       }
     }

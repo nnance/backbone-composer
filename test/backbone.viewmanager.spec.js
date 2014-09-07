@@ -29,27 +29,27 @@ describe('View Manager', function(){
   });
 
   describe('when rendering a Backbone view', function(){
-    // var watcher = jasmine.createSpy('rendered');
+    var watcherSpy = sinon.spy();
+    var viewResult;
     beforeEach(function(){
-      // view.on('rendered',watcher);
-      // view.onRender = jasmine.createSpy('onRender');
-      view.render();
+      view.on('rendered',watcherSpy);
+      view.onRender = sinon.spy();
+      viewResult = view.render();
+    });
+
+    it('should trigger a rendered event', function() {
+      expect(watcherSpy).to.have.been.calledOnce;
+    });
+
+    it('should call the onRender function', function() {
+      expect(view.onRender).to.have.been.calledOnce;
     });
 
     it('should return itself for chaining methods', function(){
-      expect(view.render()).to.equal(view);
+      expect(viewResult).to.equal(view);
     });
-
-    // it('should trigger a rendered event', function() {
-    //   expect(watcher).toHaveBeenCalled();
-    // });
-    //
-    // it('should call the onRender function', function() {
-    //   expect(view.onRender).toHaveBeenCalled();
-    // });
-
   });
-/*
+
   describe('when rendering a view with single parent template', function(){
     beforeEach(function(){
       view.template = _.template('<table><th><td>name</td><td>email</td></th></table>')
@@ -57,12 +57,11 @@ describe('View Manager', function(){
 
     describe('with attachToTemplate disabled', function(){
       beforeEach(function(){
-        view.attachToTemplate = false;
         view.render();
       });
 
       it('should render the template as the first child', function(){
-        expect(view.$el.children().first().prop('nodeName')).toEqual('TABLE');
+        expect(view.$el.children().first().prop('nodeName')).to.equal('TABLE');
       });
     });
 
@@ -72,12 +71,16 @@ describe('View Manager', function(){
         view.render();
       });
 
+      after(function(){
+        view.attachToTemplate = false;
+      });
+
       it('should have the table element as the root node', function(){
-        expect(view.el.nodeName).toBe('TABLE');
+        expect(view.el.nodeName).to.equal('TABLE');
       });
 
       it('should have table body as first child elements', function(){
-        expect(view.$el.children().first().prop('nodeName')).toEqual('TBODY');
+        expect(view.$el.children().first().prop('nodeName')).to.equal('TBODY');
       });
     });
 
@@ -88,11 +91,11 @@ describe('View Manager', function(){
       });
 
       it('should have the table element as the root node', function(){
-        expect(view.el.nodeName).toBe('TABLE');
+        expect(view.el.nodeName).to.equal('TABLE');
       });
 
       it('should have table body as first child elements', function(){
-        expect(view.$el.children().first().prop('nodeName')).toEqual('TBODY');
+        expect(view.$el.children().first().prop('nodeName')).to.equal('TBODY');
       });
     });
 
@@ -110,7 +113,7 @@ describe('View Manager', function(){
       });
 
       it('should render the template as the first child', function(){
-        expect(view.$el.children().first().prop('nodeName')).toEqual('TABLE');
+        expect(view.$el.children().first().prop('nodeName')).to.equal('TABLE');
       });
     });
 
@@ -121,81 +124,83 @@ describe('View Manager', function(){
       });
 
       it('should have a div element as the root node', function(){
-        expect(view.el.nodeName).toBe('DIV');
+        expect(view.el.nodeName).to.equal('DIV');
       });
 
       it('should have table as first child elements', function(){
-        expect(view.$el.children().first().prop('nodeName')).toEqual('TABLE');
+        expect(view.$el.children().first().prop('nodeName')).to.equal('TABLE');
       });
     });
 
   });
 
   describe('when calling setView', function(){
+    var removeSubViewsSpy = sinon.spy();
     beforeEach(function(){
-      view.removeSubViews = jasmine.createSpy('removeSubViews');
+      view.removeSubViews = removeSubViewsSpy;
       view.setView(subView);
     });
 
     it('should remove the existing views', function(){
-      expect(view.removeSubViews).toHaveBeenCalled();
+      expect(removeSubViewsSpy).to.have.been.calledOnce;
     });
 
     it('should have a table child element', function(){
-      expect(view.$('table').length).toBe(1);
+      expect(view.$('table').length).to.equal(1);
     });
 
     it('should add the view to the subViews', function(){
-      expect(view._subViews.length).toBe(1);
+      expect(view._subViews.length).to.equal(1);
     });
   });
 
   describe('when calling setView with emptyDOM option', function(){
+    var emptySpy;
     beforeEach(function(){
-      view.$el.empty = jasmine.createSpy('empty');
+      emptySpy = sinon.spy(view.$el,'empty');
+      view.$el.empty = emptySpy;
       view.setView(subView,{emptyDOM: true});
     });
 
     it('should empty the DOM of the container', function(){
-      expect(view.$el.empty).toHaveBeenCalled();
+      expect(emptySpy).to.have.been.calledOnce;
     });
 
   });
 
   describe('when calling addSubView', function(){
-    var watcher = jasmine.createSpy('watcher');
     beforeEach(function(){
-      subView.on('shown',watcher);
-      view.$el.append = jasmine.createSpy('append');
-      subView.render = jasmine.createSpy('render');
-      subView.onShow = jasmine.createSpy('onShow');
+      this.watcherSpy = sinon.spy();
+      subView.on('shown', this.watcherSpy);
+      subView.onShow = sinon.spy();
+      sinon.spy(view.$el,'append');
+      sinon.spy(subView, 'render');
       view.addSubView({view: subView});
     });
 
     it('should call render on the sub view', function(){
-      expect(subView.render).toHaveBeenCalled();
+      expect(subView.render).to.have.been.calledOnce;
     });
 
     it('should append the content to the container', function(){
-      expect(view.$el.append).toHaveBeenCalledWith(subView.el);
+      expect(view.$el.append).to.have.been.calledWith(subView.el);
     });
 
     it('should add the view to the subViews', function(){
-      expect(view._subViews.length).toBe(1);
+      expect(view.getSubViewCount()).to.equal(1);
     });
 
     it('should call onShow on the sub view', function(){
-      expect(subView.onShow).toHaveBeenCalled();
+      expect(subView.onShow).to.have.been.calledOnce;
     });
 
     it('should trigger a shown event on sub view', function(){
-      expect(watcher).toHaveBeenCalled();
+      expect(this.watcherSpy).to.have.been.calledOnce;
     });
 
     it('should return the sub view for chaining methods', function(){
-      expect(view.addSubView({view: subView})).toBe(subView);
+      expect(view.addSubView({view: subView})).to.equal(subView);
     });
-
   });
 
   describe('when calling addSubView', function(){
@@ -210,17 +215,17 @@ describe('View Manager', function(){
       });
 
       it('should append to the selected container', function(){
-        expect(view.$('#container').children().first().prop('nodeName')).toBe('TABLE');
+        expect(view.$('#container').children().first().prop('nodeName')).to.equal('TABLE');
       });
     });
 
     describe('with a prepend location', function(){
       beforeEach(function(){
-        view.$el.prepend = jasmine.createSpy('prepend');
+        sinon.spy(view.$el,'prepend');
         view.addSubView({view: subView, location: 'prepend'});
       });
       it('should call prepend on the view', function(){
-        expect(view.$el.prepend).toHaveBeenCalled();
+        expect(view.$el.prepend).to.have.been.calledOnce;
       });
     });
 
@@ -229,43 +234,43 @@ describe('View Manager', function(){
   describe('when calling removeSubViews', function(){
     var subView2 = new Backbone.View();
     beforeEach(function(){
-      subView.close = jasmine.createSpy('close');
+      subView.close = sinon.spy();
       view.addSubView({view: subView});
-      subView2.close = jasmine.createSpy('close');
+      subView2.close = sinon.spy();
       view.addSubView({view: subView2});
       view.removeSubViews();
     });
     it('should call close on each sub view', function(){
-      expect(subView.close).toHaveBeenCalled();
-      expect(subView2.close).toHaveBeenCalled();
+      expect(subView.close).to.have.been.calledOnce;
+      expect(subView2.close).to.have.been.calledOnce;
     });
     it('should remove all the sub views from the list', function(){
-      expect(view._subViews.length).toBe(0);
+      expect(view.getSubViewCount()).to.equal(0);
     });
   });
 
   describe('when calling close', function(){
-    var watcher = jasmine.createSpy('watcher');
     beforeEach(function(){
-      view.removeSubViews = jasmine.createSpy('removeSubViews');
-      view.onClose = jasmine.createSpy('onClose');
-      view.remove = jasmine.createSpy('remove');
-      view.on('closed',watcher);
+      this.watcherSpy = sinon.spy();
+      view.removeSubViews = sinon.spy();
+      view.onClose = sinon.spy();
+      view.remove = sinon.spy();
+      view.on('closed',this.watcherSpy);
       view.close();
     });
     it('should remove all sub views', function(){
-      expect(view.removeSubViews).toHaveBeenCalled();
+      expect(view.removeSubViews).to.have.been.calledOnce;
     });
     it('should call remove', function(){
-      expect(view.remove).toHaveBeenCalled();
+      expect(view.remove).to.have.been.calledOnce;
     });
     it('should call onClose', function(){
-      expect(view.onClose).toHaveBeenCalled();
+      expect(view.onClose).to.have.been.calledOnce;
     });
     it('should trigger closed event', function(){
-      expect(watcher).toHaveBeenCalled();
+      expect(this.watcherSpy).to.have.been.calledOnce;
     });
   });
-*/
+
 
 });

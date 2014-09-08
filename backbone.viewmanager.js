@@ -42,10 +42,9 @@
         if (this.template && _.isFunction(this.template)) {
             var data = _.isFunction(this.serializeData) ? this.serializeData() : this;
             var $template = $(this.template(data));
+            this.$el.html($template);
             if (this.attachToTemplate && $template.length === 1) {
-                this.setElement($template);
-            } else {
-              this.$el.html($template[0]);
+                this.setElement(this.$el.children().first());
             }
         }
         if (this.onRender && _.isFunction(this.onRender)) {

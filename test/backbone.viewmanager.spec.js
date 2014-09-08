@@ -68,7 +68,7 @@ describe('View Manager', function(){
 
   describe('when rendering a view with single parent template', function(){
     beforeEach(function(){
-      view.template = _.template('<table><th><td>name</td><td>email</td></th></table>')
+      view.template = _.template('<table><th><td>name</td><td>email</td></th></table>');
     });
 
     describe('with attachToTemplate disabled', function(){
@@ -95,23 +95,38 @@ describe('View Manager', function(){
         expect(view.$el.children().first().prop('nodeName')).to.equal('TBODY');
       });
     });
+  });
 
-    describe('when rerendering a view with attachToTemplate enabled', function(){
-      beforeEach(function(){
-        view.attachToTemplate = true;
-        view.render().render();
-      });
+  describe('when rerendering a subView with attachToTemplate enabled', function(){
+    var emailAddress = 'mocha@gmail.com';
+    beforeEach(function(){
+      view.template = _.template('<table></table>');
+      view.attachToTemplate = true;
+      view.render();
 
-      it('should have the table element as the root node', function(){
-        expect(view.el.nodeName).to.equal('TABLE');
-      });
+      subView.template = _.template('<tr><td>name</td><td id="email"><%=email%></td></tr>');
+      subView.model = new Backbone.Model({name: 'mocha', email: ''});
+      subView.serializeData = subView.model.toJSON.bind(subView.model);
+      subView.listenTo(subView.model,'change',subView.render);
+      subView.attachToTemplate = true;
 
-      it('should have table body as first child elements', function(){
-        expect(view.$el.children().first().prop('nodeName')).to.equal('TBODY');
-      });
+      view.addSubView({view: subView});
+      subView.model.set('email',emailAddress);
     });
 
+    it('should have the table element as the root node', function(){
+      expect(view.el.nodeName).to.equal('TABLE');
+    });
+
+    it('should have table body as first child elements', function(){
+      expect(view.$el.children().first().prop('nodeName')).to.equal('TBODY');
+    });
+
+    it('should have td with new email address', function(){
+      expect(view.$('#email').text()).to.equal(emailAddress);
+    });
   });
+
 
   describe('when rendering a view with multiple parent template', function(){
     beforeEach(function(){

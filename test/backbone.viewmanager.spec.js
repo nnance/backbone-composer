@@ -299,5 +299,17 @@ describe('View Manager', function(){
     });
   });
 
+  describe('when sub views close themselves', function(){
+    var subView2 = new Backbone.View();
+    beforeEach(function(){
+      view.addSubView({view:subView});
+      view.addSubView({view:subView2});
+      subView2.close();
+    });
+    it('should be removed from the sub views array', function(){
+      expect(view.getSubViewCount()).to.equal(1);
+    });
+  });
+
 
 });

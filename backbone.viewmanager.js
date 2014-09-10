@@ -50,7 +50,7 @@
         if (this.onRender && _.isFunction(this.onRender)) {
             this.onRender.apply(this, arguments);
         }
-        this.trigger('rendered');
+        this.trigger('rendered',this);
         return this;
     },
 
@@ -98,6 +98,7 @@
         else {
             this._subViews.push(options.view);
         }
+        this.listenTo(options.view,'closed',this._removeSubView);
 
         var selector;
         if (_.isObject(options.selector)) {
@@ -127,7 +128,7 @@
         if (options.view.onShow && _.isFunction(options.view.onShow)) {
             options.view.onShow.apply(options.view,arguments);
         }
-        options.view.trigger('shown');
+        options.view.trigger('shown',this);
 
         return options.view;
     },
@@ -147,9 +148,15 @@
     removeSubViews: function() {
         _.each(this._subViews, function(subView, i) {
             subView.close();
-            delete this._subViews[i];
         }, this);
         this._subViews = [];
+    },
+
+    _removeSubView: function(view) {
+      var index = this._subViews.indexOf(view);
+      if (index > -1) {
+        this._subViews.splice(index,1);
+      }
     },
 
     /**
@@ -163,7 +170,6 @@
         _.find(this._subViews, function(subView, index) {
           if (subView.model === model) {
               subView.close();
-              this._subViews.splice(index,1);
               return true;
           }
         }, this);
@@ -214,7 +220,7 @@
         }
         this.removeSubViews();
         this.remove();
-        this.trigger('closed');
+        this.trigger('closed',this);
         this.unbind();
     }
 

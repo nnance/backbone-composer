@@ -93,10 +93,10 @@
     */
     addSubView: function(options) {
         if (!this._subViews) {
-            this._subViews = [options.view];
+            this._subViews = [options];
         }
         else {
-            this._subViews.push(options.view);
+            this._subViews.push(options);
         }
         this.listenTo(options.view,'closed',this._removeSubView);
 
@@ -147,13 +147,14 @@
     */
     removeSubViews: function() {
         _.each(this._subViews, function(subView, i) {
-            subView.close();
+            subView.view.close();
         }, this);
         this._subViews = [];
     },
 
     _removeSubView: function(view) {
-      var index = this._subViews.indexOf(view);
+      var viewOption = _.findWhere(this._subViews, {view: view});
+      var index = this._subViews.indexOf(viewOption);
       if (index > -1) {
         this._subViews.splice(index,1);
       }
@@ -168,8 +169,8 @@
     */
     removeSubViewForModel: function(model) {
         _.find(this._subViews, function(subView, index) {
-          if (subView.model === model) {
-              subView.close();
+          if (subView.view.model && subView.view.model === model) {
+              subView.view.close();
               return true;
           }
         }, this);

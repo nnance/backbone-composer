@@ -97,6 +97,23 @@ describe('View Manager', function(){
     });
   });
 
+  describe('when rerendering a view with sub views', function(){
+    beforeEach(function(){
+      view.template = _.template('<table></table>');
+      view.render();
+
+      subView.template = _.template('<tr><td>name</td></tr>');
+      subView.attachToTemplate = true;
+      view.addSubView({view: subView});
+
+      view.render();
+    });
+
+    it('should restore sub views to the DOM', function() {
+      expect(view.$('tr').length).to.equal(1);
+    });
+  });
+
   describe('when rerendering a subView with attachToTemplate enabled', function(){
     var emailAddress = 'mocha@gmail.com';
     beforeEach(function(){

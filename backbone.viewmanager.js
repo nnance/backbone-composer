@@ -47,6 +47,10 @@
                 this.setElement(this.$el.children().first());
             }
         }
+        
+        // restore the sub views to the dom
+        _.each(this._subViews,this._showSubView,this);
+
         if (this.onRender && _.isFunction(this.onRender)) {
             this.onRender.apply(this, arguments);
         }
@@ -100,37 +104,41 @@
         }
         this.listenTo(options.view,'closed',this._removeSubView);
 
-        var selector;
-        if (_.isObject(options.selector)) {
-            selector = options.selector;
-        }
-        else if (_.isString(options.selector)) {
-            selector = this.$(options.selector);
-        }
-        else {
-            selector = this.$el;
-        }
+        return this._showSubView(options);
+    },
 
-        options.view.render();
-        if (options.location === 'prepend') {
-            selector.prepend(options.view.el);
-        }
-        else if (options.location === 'before') {
-            selector.before(options.view.el);
-        }
-        else if (options.location === 'after') {
-            selector.after(options.view.el);
-        }
-        else {
-            selector.append(options.view.el);
-        }
+    _showSubView: function(options) {
+      var selector;
+      if (_.isObject(options.selector)) {
+          selector = options.selector;
+      }
+      else if (_.isString(options.selector)) {
+          selector = this.$(options.selector);
+      }
+      else {
+          selector = this.$el;
+      }
 
-        if (options.view.onShow && _.isFunction(options.view.onShow)) {
-            options.view.onShow.apply(options.view,arguments);
-        }
-        options.view.trigger('shown',this);
+      options.view.render();
+      if (options.location === 'prepend') {
+          selector.prepend(options.view.el);
+      }
+      else if (options.location === 'before') {
+          selector.before(options.view.el);
+      }
+      else if (options.location === 'after') {
+          selector.after(options.view.el);
+      }
+      else {
+          selector.append(options.view.el);
+      }
 
-        return options.view;
+      if (options.view.onShow && _.isFunction(options.view.onShow)) {
+          options.view.onShow.apply(options.view,arguments);
+      }
+      options.view.trigger('shown',this);
+
+      return options.view;
     },
 
     /**

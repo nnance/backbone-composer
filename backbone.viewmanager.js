@@ -47,7 +47,7 @@
                 this.setElement(this.$el.children().first());
             }
         }
-        
+
         // restore the sub views to the dom
         _.each(this._subViews,this._showSubView,this);
 
@@ -96,6 +96,10 @@
     * @param {object} options - An option object with a view and a selector
     */
     addSubView: function(options) {
+        if (!options || !options.view) {
+            throw new Error('Missing required view option');
+        }
+
         if (!this._subViews) {
             this._subViews = [options];
         }

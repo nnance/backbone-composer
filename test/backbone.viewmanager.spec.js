@@ -247,6 +247,12 @@ describe('View Manager', function(){
     });
   });
 
+  describe('when calling addSubView without a view option', function(){
+    it('should throw required option error', function(){
+      expect(view.addSubView.bind(view,{})).to.throw(/required/);
+    });
+  });
+
   describe('when calling addSubView', function(){
     beforeEach(function(){
       view.template = _.template('<div id="container"></div>');

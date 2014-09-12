@@ -54,7 +54,7 @@ to perform some work after the view is added to the DOM you can implement a
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L95">lineno 95</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L97">lineno 97</a>
 </li>
 </ul></dd>
 </dl>
@@ -75,7 +75,7 @@ before removing from the DOM.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L212">lineno 212</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L239">lineno 239</a>
 </li>
 </ul></dd>
 </dl>
@@ -93,7 +93,7 @@ before removing from the DOM.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L178">lineno 178</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L205">lineno 205</a>
 </li>
 </ul></dd>
 </dl>
@@ -111,7 +111,7 @@ before removing from the DOM.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L140">lineno 140</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L161">lineno 161</a>
 </li>
 </ul></dd>
 </dl>
@@ -129,7 +129,7 @@ before removing from the DOM.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L82">lineno 82</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L84">lineno 84</a>
 </li>
 </ul></dd>
 </dl>
@@ -168,7 +168,7 @@ will be removed from the DOM.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L163">lineno 163</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L191">lineno 191</a>
 </li>
 </ul></dd>
 </dl>
@@ -186,7 +186,7 @@ will be removed from the DOM.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L148">lineno 148</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L169">lineno 169</a>
 </li>
 </ul></dd>
 </dl>
@@ -219,6 +219,25 @@ that creates all views with a default div tag.</p>
 </dl>
 </dd>
 <dt>
+<h4 class="name" id="restoreSubViews"><span class="type-signature"></span>restoreSubViews<span class="signature">()</span><span class="type-signature"></span></h4>
+</dt>
+<dd>
+<div class="description">
+<p>RestoreSubViews can be used to restore views to the DOM that have been
+removed as a result of the parent view rerendering</p>
+</div>
+<dl class="details">
+<dt class="tag-source">Source:</dt>
+<dd class="tag-source"><ul class="dummy">
+<li>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
+<span>, </span>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L118">lineno 118</a>
+</li>
+</ul></dd>
+</dl>
+</dd>
+<dt>
 <h4 class="name" id="serializeForm"><span class="type-signature"></span>serializeForm<span class="signature">()</span><span class="type-signature"></span></h4>
 </dt>
 <dd>
@@ -231,7 +250,7 @@ that creates all views with a default div tag.</p>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L189">lineno 189</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L216">lineno 216</a>
 </li>
 </ul></dd>
 </dl>
@@ -278,7 +297,7 @@ that the view is attached is managed by something other than Backbone</p></td>
 <li>
 <a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js">backbone.viewmanager.js</a>
 <span>, </span>
-<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L67">lineno 67</a>
+<a href="https://github.com/nnance/backbone-viewmanager/blob/master/backbone.viewmanager.js#L69">lineno 69</a>
 </li>
 </ul></dd>
 </dl>

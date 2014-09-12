@@ -42,9 +42,14 @@
         if (this.template && _.isFunction(this.template)) {
             var data = _.isFunction(this.serializeData) ? this.serializeData() : this;
             var $template = $(this.template(data));
-            this.$el.html($template);
             if (this.attachToTemplate && $template.length === 1) {
-                this.setElement(this.$el.children().first());
+                // swap out the view on the top level element to avoid duplication
+                this.$el.replaceWith($template);
+
+                // delegate events
+                this.setElement($template);
+            } else {
+                this.$el.html($template);
             }
         }
 

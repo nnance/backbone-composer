@@ -139,6 +139,10 @@ describe('View Manager', function(){
       expect(view.$el.children().first().prop('nodeName')).to.equal('TBODY');
     });
 
+    it('should have only one row element', function(){
+      expect(view.$('tr').length).to.equal(1);
+    });
+
     it('should have td with new email address', function(){
       expect(view.$('#email').text()).to.equal(emailAddress);
     });

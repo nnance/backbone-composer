@@ -48,8 +48,7 @@
             }
         }
 
-        // restore the sub views to the dom
-        _.each(this._subViews,this._showSubView,this);
+        this.restoreSubViews();
 
         if (this.onRender && _.isFunction(this.onRender)) {
             this.onRender.apply(this, arguments);
@@ -109,6 +108,16 @@
         this.listenTo(options.view,'closed',this._removeSubView);
 
         return this._showSubView(options);
+    },
+
+    /**
+    * RestoreSubViews can be used to restore views to the DOM that have been
+    * removed as a result of the parent view rerendering
+    * @restoreSubViews
+    */
+    restoreSubViews: function() {
+      // restore the sub views to the dom
+      _.each(this._subViews,this._showSubView,this);
     },
 
     _showSubView: function(options) {

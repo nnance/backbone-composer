@@ -1,3 +1,5 @@
+// Backbone.viewmanager 0.1.6
+
 (function (factory) {
 
   // Check for AMD.

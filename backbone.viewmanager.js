@@ -245,10 +245,10 @@
         if (this.onClose && _.isFunction(this.onClose)) {
             this.onClose.apply(this, arguments);
         }
+        this.trigger('closed',this);
         this.removeSubViews();
         this.unbind();
         this.remove();
-        this.trigger('closed',this);
     }
 
   });

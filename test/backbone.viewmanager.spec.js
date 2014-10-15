@@ -183,14 +183,16 @@ describe('View Manager', function(){
   });
 
   describe('when calling setView', function(){
-    var removeSubViewsSpy = sinon.spy();
     beforeEach(function(){
-      view.removeSubViews = removeSubViewsSpy;
+      sinon.spy(view, 'removeSubViews');
       view.setView(subView);
+    });
+    afterEach(function(){
+      view.removeSubViews.restore();
     });
 
     it('should remove the existing views', function(){
-      expect(removeSubViewsSpy).to.have.been.calledOnce;
+      expect(view.removeSubViews).to.have.been.calledOnce;
     });
 
     it('should have a table child element', function(){
@@ -288,14 +290,20 @@ describe('View Manager', function(){
   describe('when calling removeSubViews', function(){
     var subView2 = new Backbone.View();
     beforeEach(function(){
-      subView.close = sinon.spy();
+      sinon.spy(subView, "close");
       view.addSubView({view: subView});
-      subView2.close = sinon.spy();
+      sinon.spy(subView2, "close");
       view.addSubView({view: subView2});
       view.removeSubViews();
     });
-    it('should call close on each sub view', function(){
+    afterEach(function(){
+      subView.close.restore();
+      subView2.close.restore();
+    });
+    it('should call close on the first subview', function(){
       expect(subView.close).to.have.been.calledOnce;
+    });
+    it('should call close on the second subview', function(){
       expect(subView2.close).to.have.been.calledOnce;
     });
     it('should remove all the sub views from the list', function(){

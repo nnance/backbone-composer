@@ -1,13 +1,60 @@
-backbone.viewmanager
+backbone-viewmanager
 ====================
+
+Current Version: 0.1.11
 
 [![Build Status](https://secure.travis-ci.org/nnance/backbone-viewmanager.png?branch=master)](http://travis-ci.org/nnance/backbone-viewmanager)
 [![Coverage Status](https://img.shields.io/coveralls/nnance/backbone-viewmanager.svg)](https://coveralls.io/r/nnance/backbone-viewmanager)
 [![Dependency Status](https://gemnasium.com/nnance/backbone-viewmanager.svg)](https://gemnasium.com/nnance/backbone-viewmanager)
 
-Backbone View plugin to simplify rendering and life cycle management
+
+# View Manager
+
+View Manager is a minimal, slightly opinionated Backbone plugin to simplify view rendering and life cycle management.  The plugin goals include:
+* Minimize boilerplate view code
+* Manage view life cycle to minimize memory leaks
+* Simplify the management of child views / subviews
+* Restore the state of the DOM after re-rendering
+
+## Table of Contents
+* [Overview](#overview)
+* [API](#api)
+
+## <a name="overview"></a>Overview
+View Manager attempts to enhance the existing Backbone.View classs with a simple API and without altering its' existing behavior.  To this point there are two significant aspects of the plugin important to understand.
+
+### Rendering
+View Manager provides an implementation of the render function that isn't provided by default in Backbone.  View Manager mostly provides this implementation as way to remove boilerplate code.  The additional features of the plugin can be used even if you elect to override the provided rendering implementation.  However, it is likely you will find the benefits of its render implementation to be useful.  The benefits include:
+
+#### Templating
+If you assign a template function to the view, View Manager will use the template function to establish as the DOM for the view. For example:
+```
+Backbone.View.extend({
+  template: JST['templates/index.ejs'],
+  ...
+});
+```
+View Manager doesn't handle the loading of the template or make any assumptions on how the template is loaded.  It does require that the template is defined as a function.  It is recommend that you use a template system that is pre-compiled.
+
+#### Removing the div wrapper
+By default Backbone wraps all views with a <div> tag. This can cause confusing and create unexpected DOM elements.  Backbone has methods for overcoming this however, this results in elements of the template being defined in the view code.  
+
+If you set the attachToTemplate option to true on a view it will automatically attach the outer tag of the view to the top level tag of the template.  Keeping all the DOM definition in the template.  For example:
+```
+Backbone.View.extend({
+  template: JST['templates/index.ejs'],
+  attachToTemplate: true,
+  ...
+});
+```
+If you want to set this value globally you can do something like this:
+```
+Backbone.View.prototype.attachToTemplate = true;
+```
+#### Serializing View Data
 
 
+## <a name="api"></a>API
 <!-- START docme generated API please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN docme TO UPDATE -->
 

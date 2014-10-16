@@ -172,7 +172,6 @@
     * @removeSubViews
     */
     removeSubViews: function() {
-      this.stopListening();
       _.each(this._subViews, function(subView) {
         this.stopListening(subView.view);
         subView.view.close();

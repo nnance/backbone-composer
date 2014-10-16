@@ -172,10 +172,12 @@
     * @removeSubViews
     */
     removeSubViews: function() {
-        _.each(this._subViews, function(subView) {
-            subView.view.close();
-        });
-        this._subViews = [];
+      this.stopListening();
+      _.each(this._subViews, function(subView) {
+        this.stopListening(subView.view);
+        subView.view.close();
+      }, this);
+      this._subViews = [];
     },
 
     _removeSubView: function(view) {
@@ -245,10 +247,10 @@
         if (this.onClose && _.isFunction(this.onClose)) {
             this.onClose.apply(this, arguments);
         }
-        this.trigger('closed',this);
         this.removeSubViews();
-        this.unbind();
         this.remove();
+        this.trigger('closed',this);
+        this.unbind();
     }
 
   });

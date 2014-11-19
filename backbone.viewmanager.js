@@ -1,4 +1,9 @@
-(function (factory) {
+/*!
+ * backbone.viewmanager.js v0.1.11
+ * Copyright 2014, Nick Nance (@nancenick)
+ * backbone.viewmanager.js may be freely distributed under the MIT license.
+ */
+ (function (factory) {
 
   // Check for AMD.
   if (typeof define === 'function' && define.amd) {

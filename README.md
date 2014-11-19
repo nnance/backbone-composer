@@ -15,11 +15,12 @@ View Manager is a minimal, slightly opinionated Backbone plugin to simplify view
 * Simplify the management of child views / subviews
 * Restore the state of the DOM after re-rendering
 
-Documentation is available on the [wiki](wiki)
-
 ## Getting Started
 
 Install with bower.  If you haven't used [bower](#http://bower.io) before, be sure to check out the [Getting Started](http://bower.io/#getting-started) guide, as it explains how to install Bower and install bower packages. Once you're familiar with that process, you may install this plugin with this command:
 ```
 bower install backbone.viewmanager --save
 ```
+## Documentation
+
+Documentation is available on the [project wiki](wiki)

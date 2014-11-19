@@ -23,4 +23,4 @@ bower install backbone.viewmanager --save
 ```
 ## Documentation
 
-Documentation is available on the [project wiki](wiki)
+Documentation is available on the [project wiki](/nnance/backbone-viewmanager/wiki)

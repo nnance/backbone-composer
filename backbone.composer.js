@@ -1,7 +1,7 @@
 /*!
- * backbone.viewmanager.js v0.1.11
+ * backbone.composer.js v0.2.0
  * Copyright 2014, Nick Nance (@nancenick)
- * backbone.viewmanager.js may be freely distributed under the MIT license.
+ * backbone.composer.js may be freely distributed under the MIT license.
  */
  (function (factory) {
 

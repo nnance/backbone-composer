@@ -18,12 +18,12 @@ module.exports = function(grunt) {
       options: {
         jshintrc : '.jshintrc'
       },
-      plugin : [ 'backbone.viewmanager.js' ]
+      plugin : [ 'backbone.composer.js' ]
     },
 
     watch: {
       plugin : {
-        files : ['backbone.viewmanager.js', 'test/**/*.js', 'test/spec.html'],
+        files : ['backbone.composer.js', 'test/**/*.js', 'test/spec.html'],
         tasks : ['jshint', 'mocha_phantomjs:plugin']
       }
     }

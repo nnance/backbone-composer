@@ -1,14 +1,14 @@
 {
-  "name": "backbone.viewmanager",
-  "version": "0.1.11",
-  "description": "Backbone View plugin to simplify rendering and life cycle management",
-  "main": "backbone.viewmanager.js",
+  "name": "backbone.composer",
+  "version": "0.2.0",
+  "description": "Backbone View plugin to simplify compose complex views with subviews",
+  "main": "backbone.composer.js",
   "scripts": {
     "test": "grunt test"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/nnance/backbone-viewmanager.git"
+    "url": "git://github.com/nnance/backbone-composer.git"
   },
   "keywords": [
     "Backbone"
@@ -16,9 +16,9 @@
   "author": "Nick Nance",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nnance/backbone-viewmanager/issues"
+    "url": "https://github.com/nnance/backbone-composer/issues"
   },
-  "homepage": "https://github.com/nnance/backbone-viewmanager",
+  "homepage": "https://github.com/nnance/backbone-composer",
   "dependencies": {
     "jquery": "^2.1.1",
     "backbone": ">=0.9.9 <=1.1.2",

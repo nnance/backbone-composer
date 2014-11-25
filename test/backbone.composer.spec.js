@@ -1,4 +1,4 @@
-describe('View Manager', function(){
+describe('backbone.composer', function(){
   var SubView = Backbone.View.extend({tagName: 'table'});
   var view, subView;
   beforeEach(function(){

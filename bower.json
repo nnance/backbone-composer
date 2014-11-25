@@ -1,12 +1,12 @@
 {
-  "name": "backbone.viewmanager",
-  "version": "0.1.11",
-  "homepage": "https://github.com/nnance/backbone-viewmanager",
+  "name": "backbone.composer",
+  "version": "0.2.0",
+  "homepage": "https://github.com/nnance/backbone-composer",
   "authors": [
     "Nick Nance <nance.nick@gmail.com>"
   ],
   "description": "Backbone View plugin to simplify rendering and life cycle management",
-  "main": "backbone.viewmanager.js",
+  "main": "backbone.composer.js",
   "moduleType": [
     "amd"
   ],

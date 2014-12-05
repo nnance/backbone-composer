@@ -7,9 +7,9 @@ Current Version: 0.2.0
 [![Dependency Status](https://gemnasium.com/nnance/backbone-composer.svg)](https://gemnasium.com/nnance/backbone-composer)
 
 
-# View Manager
+# Composer
 
-View Manager is a minimal, slightly opinionated Backbone plugin to simplify view rendering and life cycle management.  The plugin goals include:
+Is a minimal, slightly opinionated Backbone plugin to simplify view rendering and life cycle management.  The plugin goals include:
 * Minimize boilerplate view code
 * Manage view life cycle to minimize memory leaks
 * Simplify the management of child views / subviews

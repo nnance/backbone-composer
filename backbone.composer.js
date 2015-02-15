@@ -1,5 +1,5 @@
 /*!
- * backbone.composer.js v0.2.0
+ * backbone.composer.js v0.2.1
  * Copyright 2014, Nick Nance (@nancenick)
  * backbone.composer.js may be freely distributed under the MIT license.
  */

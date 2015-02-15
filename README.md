@@ -1,8 +1,7 @@
 backbone-composer
 ====================
 
-Current Version: 0.2.1
-
+[![npm version](https://badge.fury.io/js/backbone.composer.svg)](http://badge.fury.io/js/backbone.composer)
 [![Build Status](https://secure.travis-ci.org/nnance/backbone-composer.png?branch=master)](http://travis-ci.org/nnance/backbone-composer)
 [![Dependency Status](https://gemnasium.com/nnance/backbone-composer.svg)](https://gemnasium.com/nnance/backbone-composer)
 

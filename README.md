@@ -9,7 +9,7 @@ Current Version: 0.2.1
 
 # Composer
 
-Composer is a minimal, slightly opinionated Backbone plugin to simplify view rendering and life cycle management.  The plugin goals include:
+Is a minimal, slightly opinionated Backbone plugin to simplify view rendering and life cycle management.  The plugin goals include:
 * Minimize boilerplate view code
 * Manage view life cycle to minimize memory leaks
 * Simplify the management of child views / subviews

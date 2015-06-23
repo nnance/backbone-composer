@@ -1,6 +1,6 @@
 {
   "name": "backbone.composer",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "homepage": "https://github.com/nnance/backbone-composer",
   "authors": [
     "Nick Nance <nance.nick@gmail.com>"
@@ -22,7 +22,7 @@
     "tests"
   ],
   "dependencies": {
-    "underscore": "~1.7.0",
-    "backbone": "~1.1.2"
+    "underscore": "~1.8.3",
+    "backbone": "~1.2.1"
   }
 }

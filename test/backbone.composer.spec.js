@@ -135,8 +135,12 @@ describe('backbone.composer', function(){
       expect(view.el.nodeName).to.equal('TABLE');
     });
 
+    it('should have the table element as the root node of subView', function(){
+      expect(subView.el.nodeName).to.equal('TR');
+    });
+
     it('should have table body as first child elements', function(){
-      expect(view.$el.children().first().prop('nodeName')).to.equal('TBODY');
+      expect(view.$el.children().first().prop('nodeName')).to.equal('TR');
     });
 
     it('should have only one row element', function(){

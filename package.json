@@ -1,6 +1,6 @@
 {
   "name": "backbone.composer",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Backbone View plugin to simplify compose complex views with subviews",
   "main": "backbone.composer.js",
   "scripts": {

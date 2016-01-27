@@ -21,8 +21,8 @@
   "homepage": "https://github.com/nnance/backbone-composer",
   "dependencies": {
     "jquery": "^2.1.1",
-    "backbone": ">=0.9.9 <=1.2.x",
-    "underscore": ">=1.4.0 <=1.8.x"
+    "backbone": ">=0.9.9 <=1.2.3",
+    "underscore": ">=1.4.0 <=1.8.3"
   },
   "devDependencies": {
     "chai": "^3.0.0",
